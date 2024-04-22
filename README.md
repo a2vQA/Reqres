@@ -87,7 +87,7 @@ gradle clean withTags -Denv=remote -DbrowserRemoteUrl=*Remote selenoid or moon h
 После выполнения сборки, в блоке ```Build History``` напротив номера сборки появятся значки ```Allure Report``` и ```Allure TestOps```, при клике на которые откроется страница с сформированным html-отчетом и тестовой документацией соответственно.
 
 <a id="allureReport"></a>
-## <img width="5%" style="vertical-align:middle" title="Allure Report" src="https://avatars.githubusercontent.com/u/5879127?s=200&v=4"> </a> Пример <a target="_blank" href="https://jenkins.autotests.cloud/view/C24/job/C24-v_artyomenko-Reqres-API-diploma/2/allure/"> Allure-отчета </a>
+## <img width="5%" style="vertical-align:middle" title="Allure Report" src="https://avatars.githubusercontent.com/u/5879127?s=200&v=4"> </a> Пример <a target="_blank" href="https://jenkins.autotests.cloud/view/C24/job/C24-v_artyomenko-Reqres-API-diploma/allure/"> Allure-отчета </a>
 ### Overview
 
 <p align="center">
