@@ -1,6 +1,6 @@
 # Проект-презентация по автоматизации API тестов для сайта "Reqres.in"
 
-<img alt="Picture of site" src="/media/reqres.jpg">
+<a href="https://reqres.in/"> <img alt="Picture of site" src="/media/reqres.jpg">
 
 ## :clipboard: Содержание:
 
@@ -72,16 +72,14 @@ gradle clean withTags -Denv=remote -DbrowserRemoteUrl=*Remote selenoid or moon h
 ```
 
 <a id="jenkins"></a>
-## <img width="5%" style="vertical-align:middle" title="Jenkins" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg"> </a> Сборка в <a target="_blank" href="https://jenkins.autotests.cloud/view/C24/job/C24-v_artyomenko-HW17-YouGile/"> Jenkins </a>
+## <img width="5%" style="vertical-align:middle" title="Jenkins" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg"> </a> Сборка в <a target="_blank" href="https://jenkins.autotests.cloud/view/C24/job/C24-v_artyomenko-Reqres-API-diploma/"> Jenkins </a>
 
 Для запуска сборки необходимо перейти в раздел ```Build with Parameters```, выбрать необходимые параметры и нажать кнопку ```Build```.
 #### :hammer_and_wrench: Параметры сборки в Jenkins:
-- BROWSER (браузер: chrome/firefox, по умолчанию firefox)
-- BROWSER_VERSION (версия браузера, по умолчанию 123.0)
-- BROWSER_SIZE (размер окна браузера, по умолчанию 1920x1080)
-- BROWSER_REMOTE_URL (адрес удаленного сервера для запуска)
-- BASE_URL (адрес базового URL продукта Перекресток, по умолчанию https://perekrestok.ru)
+- BASE_URL (адрес базового URL продукта Reqres, по умолчанию https://reqres.in/)
+- BASE_PATH (адрес базовых api endpoints продукта reqres, по умолчанию https://reqres.in/)
 - TAGS (теги конкретных автотестов для запуска, по умолчанию smoke)
+- BROWSER_REMOTE_URL (адрес удаленного сервера для запуска)
 <p align="center">
 <img title="Jenkins Build" src="media/jenkinsMain.png">
 </p>
@@ -89,7 +87,7 @@ gradle clean withTags -Denv=remote -DbrowserRemoteUrl=*Remote selenoid or moon h
 После выполнения сборки, в блоке ```Build History``` напротив номера сборки появятся значки ```Allure Report``` и ```Allure TestOps```, при клике на которые откроется страница с сформированным html-отчетом и тестовой документацией соответственно.
 
 <a id="allureReport"></a>
-## <img width="5%" style="vertical-align:middle" title="Allure Report" src="https://avatars.githubusercontent.com/u/5879127?s=200&v=4"> </a> Пример <a target="_blank" href="https://jenkins.autotests.cloud/view/C24/job/C24-v_artyomenko-HW17-YouGile/6/allure/"> Allure-отчета </a>
+## <img width="5%" style="vertical-align:middle" title="Allure Report" src="https://avatars.githubusercontent.com/u/5879127?s=200&v=4"> </a> Пример <a target="_blank" href="https://jenkins.autotests.cloud/view/C24/job/C24-v_artyomenko-Reqres-API-diploma/2/allure/"> Allure-отчета </a>
 ### Overview
 
 <p align="center">
@@ -97,7 +95,7 @@ gradle clean withTags -Denv=remote -DbrowserRemoteUrl=*Remote selenoid or moon h
 </p>
 
 <a id="allureTestOps"></a>
-## <img width="3%" style="vertical-align:middle" title="Allure TestOps" src="https://plugins.jetbrains.com/files/12513/451639/icon/pluginIcon.svg"> </a> Интеграция с <a target="_blank" href="https://allure.autotests.cloud/project/4085/dashboards"> Allure TestOps </a>
+## <img width="3%" style="vertical-align:middle" title="Allure TestOps" src="https://plugins.jetbrains.com/files/12513/451639/icon/pluginIcon.svg"> </a> Интеграция с <a target="_blank" href="https://allure.autotests.cloud/project/4184/dashboards"> Allure TestOps </a>
 
 На *Dashboard* в ```Allure TestOps``` видна статистика количества автоматизированных тестов. Новые тесты, а так же результаты прогона приходят по интеграции при каждом запуске сборки.
 
@@ -112,7 +110,7 @@ gradle clean withTags -Denv=remote -DbrowserRemoteUrl=*Remote selenoid or moon h
 </p>
 
 <a id="jira"></a>
-## <img width="4%" style="vertical-align:middle" title="Jira" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original-wordmark.svg"> </a> Интеграция с <a target="_blank" href="https://jira.autotests.cloud/browse/HOMEWORK-1131"> Jira </a>
+## <img width="4%" style="vertical-align:middle" title="Jira" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original-wordmark.svg"> </a> Интеграция с <a target="_blank" href="https://jira.autotests.cloud/browse/HOMEWORK-1196"> Jira </a>
 
 Реализована интеграция ```Allure TestOps``` с ```Jira```, в тикете отображается, какие тест-кейсы были написаны в рамках задачи и результат их прогона.
 
@@ -120,7 +118,7 @@ gradle clean withTags -Denv=remote -DbrowserRemoteUrl=*Remote selenoid or moon h
 <img title="Jira Task" src="media/jira.png">
 </p>
 
-И наоборот, у тест кейсов отображается ссылка на тикет в Jira, во вкладке ```Test cases```.
+И наоборот, у тест кейсов отображается ссылка на тикет в Jira, во вкладке ```Test cases```, в поле ```Issue links```.
 
 <p align="center">
 <img title="Allure TestOps test case" src="media/allureTestOpsTestCase.png">
@@ -133,12 +131,4 @@ gradle clean withTags -Denv=remote -DbrowserRemoteUrl=*Remote selenoid or moon h
 
 <p align="center">
 <img width="50%" title="Telegram Notifications" src="media/tg.png">
-</p>
-
-<a id="video"></a>
-## <img width="4%" style="vertical-align:middle" title="Selenoid" src="https://aerokube.com/img/aerokube_logo.svg"> Видео примера запуска тестов в Selenoid
-
-В отчетах Allure для каждого теста прикреплен не только скриншот, но и видео прохождения теста.
-<p align="center">
-  <img title="Selenoid Video" src="media/video.gif">
 </p>
