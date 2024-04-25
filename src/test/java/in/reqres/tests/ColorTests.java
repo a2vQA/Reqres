@@ -7,6 +7,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -25,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 @Story("Ресурс цветов")
 @Feature("Работа со списками цветов")
 @DisplayName("Работа со списками цветов")
-@Tag("smoke")
+@Tags({@Tag("smoke"), @Tag("colors")})
 public class ColorTests extends BaseTest {
 
     @Test
@@ -33,22 +34,23 @@ public class ColorTests extends BaseTest {
     public void checkForSpecificColorInListTest() {
         ColorWrapper response = step("Send request for colors list", () ->
                 given(basicRequestSpec)
-                .when()
-                .get("/unknown?per_page=20")
-                .then()
-                .spec(responseSpec200)
-                .body(matchesJsonSchemaInClasspath("contracts/get/api__unknown.json"))
-                .extract()
-                .as(ColorWrapper.class));
+                        .when()
+                        .queryParam("per_page", 20)
+                        .get("/unknown")
+                        .then()
+                        .spec(responseSpec200)
+                        .body(matchesJsonSchemaInClasspath("contracts/get/api__unknown.json"))
+                        .extract()
+                        .as(ColorWrapper.class));
 
         List<ColorModel> colorsListWithParameters = response.getData();
 
         step("Check that color 7 is 'chili pepper' with all fields", () ->
-        assertAll("Check 'chili pepper' color and its fields in list with id 7",
-                () -> assertThat(colorsListWithParameters.get(7).getName(), equalTo("chili pepper")),
-                () -> assertThat(colorsListWithParameters.get(7).getYear(), equalTo("2007")),
-                () -> assertThat(colorsListWithParameters.get(7).getColor(), equalTo("#9B1B30")),
-                () -> assertThat(colorsListWithParameters.get(7).getPantoneValue(), equalTo("19-1557"))));
+                assertAll("Check 'chili pepper' color and its fields in list with id 7",
+                        () -> assertThat(colorsListWithParameters.get(7).getName(), equalTo("chili pepper")),
+                        () -> assertThat(colorsListWithParameters.get(7).getYear(), equalTo("2007")),
+                        () -> assertThat(colorsListWithParameters.get(7).getColor(), equalTo("#9B1B30")),
+                        () -> assertThat(colorsListWithParameters.get(7).getPantoneValue(), equalTo("19-1557"))));
     }
 
     @Test

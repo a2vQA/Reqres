@@ -8,5 +8,5 @@ import java.util.List;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ColorWrapper {
-        private List<ColorModel> data;
+    private List<ColorModel> data;
 }

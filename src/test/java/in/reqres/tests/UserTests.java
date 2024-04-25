@@ -8,6 +8,7 @@ import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -28,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 @Story("Пользователи")
 @Feature("Работа с пользователями")
 @DisplayName("Работа с пользователями")
-@Tag("smoke")
+@Tags({@Tag("smoke"), @Tag("users")})
 public class UserTests extends BaseTest {
     private final UserModel userData = new UserModel();
 
@@ -89,7 +90,8 @@ public class UserTests extends BaseTest {
     public void checkForUsernameNLastnameInListTest(String firstName, String lastName) {
         Response response = step("Send request for user list", () -> given(basicRequestSpec)
                 .when()
-                .get("/users?per_page=20")
+                .queryParam("per_page", 20)
+                .get("/users")
                 .then()
                 .spec(responseSpec200)
                 .body(matchesJsonSchemaInClasspath("contracts/get/api__users.json"))

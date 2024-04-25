@@ -8,6 +8,7 @@ import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static in.reqres.api.spec.ReqresApiSpec.basicRequestSpec;
@@ -24,7 +25,7 @@ import static org.hamcrest.Matchers.notNullValue;
 @Story("Авторизация")
 @Feature("Работа с авторизацией")
 @DisplayName("Работа с авторизацией")
-@Tag("smoke")
+@Tags({@Tag("smoke"), @Tag("login")})
 public class LoginTests extends BaseTest {
     private final LoginModel loginModel = new LoginModel();
     private final String existingEmail = "eve.holt@reqres.in";

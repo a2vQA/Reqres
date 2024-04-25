@@ -11,6 +11,5 @@ public interface DriverConfig extends Config {
     Boolean isRemote();
 
     @Key("browser.remote.url")
-    @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub")
     String browserRemoteUrl();
 }
